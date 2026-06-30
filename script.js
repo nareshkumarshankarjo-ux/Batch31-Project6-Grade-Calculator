@@ -1,67 +1,115 @@
-function calculateGrade() {
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-    let studentName = document.getElementById("studentName").value.trim();
+body{
+    background:#f4f7fc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
 
-    let english = Number(document.getElementById("english").value);
-    let maths = Number(document.getElementById("maths").value);
-    let science = Number(document.getElementById("science").value);
-    let social = Number(document.getElementById("social").value);
-    let computer = Number(document.getElementById("computer").value);
+.container{
+    width:500px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 
-    // Validate Student Name
-    if (studentName === "") {
-        document.getElementById("result").innerHTML =
-            "<span style='color:red;'>Please enter the student name.</span>";
-        return;
-    }
+h1{
+    text-align:center;
+    color:#333;
+    margin-bottom:20px;
+}
 
-    // Validate Marks
-    if (
-        english < 0 || english > 100 ||
-        maths < 0 || maths > 100 ||
-        science < 0 || science > 100 ||
-        social < 0 || social > 100 ||
-        computer < 0 || computer > 100
-    ) {
-        document.getElementById("result").innerHTML =
-            "<span style='color:red;'>Please enter marks between 0 and 100 for all subjects.</span>";
-        return;
-    }
+label{
+    font-weight:bold;
+    display:block;
+    margin-bottom:8px;
+}
 
-    let total = english + maths + science + social + computer;
-    let average = total / 5;
+input{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
 
-    let grade;
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
 
-    if (average >= 90) {
-        grade = "A+";
-    } else if (average >= 80) {
-        grade = "A";
-    } else if (average >= 70) {
-        grade = "B";
-    } else if (average >= 60) {
-        grade = "C";
-    } else if (average >= 50) {
-        grade = "D";
-    } else {
-        grade = "F (Fail)";
-    }
+table,th,td{
+    border:1px solid #ddd;
+}
 
-    document.getElementById("result").innerHTML = `
-        <h2>Student Result</h2>
-        <p><strong>Student Name:</strong> ${studentName}</p>
-        <hr>
+th{
+    background:#007bff;
+    color:white;
+}
 
-        <p><strong>English:</strong> ${english}</p>
-        <p><strong>Mathematics:</strong> ${maths}</p>
-        <p><strong>Science:</strong> ${science}</p>
-        <p><strong>Social Science:</strong> ${social}</p>
-        <p><strong>Computer Science:</strong> ${computer}</p>
+th,td{
+    padding:10px;
+    text-align:center;
+}
 
-        <hr>
+td input{
+    width:80px;
+    text-align:center;
+    margin:0;
+}
 
-        <p><strong>Total Marks:</strong> ${total} / 500</p>
-        <p><strong>Average:</strong> ${average.toFixed(2)}%</p>
-        <p><strong>Grade:</strong> ${grade}</p>
-    `;
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:first-child{
+    background:#007bff;
+    color:white;
+}
+
+button:first-child:hover{
+    background:#0056b3;
+}
+
+.clear-btn{
+    background:#dc3545;
+    color:white;
+}
+
+.clear-btn:hover{
+    background:#b52b38;
+}
+
+#result{
+    margin-top:20px;
+    background:#f8f9fa;
+    padding:15px;
+    border-radius:5px;
+    line-height:1.8;
+}
+
+#result h2{
+    color:#007bff;
+    text-align:center;
 }
